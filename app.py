@@ -19,17 +19,10 @@ def home():
     return render_template('index.html')
 
 @app.route('/upload', methods=['POST'])
-def upload_files():
-    uploaded_files = request.files.getlist("pdfs")
-    file_texts = []
-    for file in uploaded_files:
-        if file.filename.endswith('.pdf'):
-            file_path = os.path.join('uploads', file.filename)
-            file.save(file_path)
-            texts = extract_text_from_pdf(file_path)
-            file_texts.append({'filename': file.filename, 'text': texts})
-    return jsonify({'files': file_texts})
 
+def upload_files():
+    print("Will be uploading files...")
+    return jsonify({"status": "success"}), 200
 
 
 if __name__ == '__main__':
