@@ -1,5 +1,6 @@
 # AI PDF Q&A Web App
 This is a Flask based **RAG** application. 
+
 User uploads a PDF -> text is extracted -> converted to vectors (embeddings) -> stored in FAISS -> when user asks a question, the system finds the relevant sections and generates the answer using **Groq API (LLaMA 3.3 70B)**.
 
 ---
