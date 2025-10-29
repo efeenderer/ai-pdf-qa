@@ -1,0 +1,6 @@
+Flask
+pdfplumber
+openai
+faiss-cpu
+tiktoken
+python-dotenv
