@@ -1,6 +1,8 @@
-Flask
-pdfplumber
-openai
-faiss-cpu
-tiktoken
+flask
 python-dotenv
+pdfplumber
+sentence-transformers==2.7.0
+faiss-cpu
+numpy
+requests
+nltk

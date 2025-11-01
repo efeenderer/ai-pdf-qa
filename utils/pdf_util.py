@@ -1,26 +1,22 @@
-import pdfplumber
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 
-pdf_path = os.getenv("PDF_FOLDER")
-
+# Basic PDF text extraction
+import pdfplumber
 def extract_text_from_pdf(file_path):
     texts = []
+    
     with pdfplumber.open(file_path) as pdf:
         for page in pdf.pages:
-            texts.append(page.extract_text())
-    return texts
+            t = page.extract_text() or ""
+            if t.strip():
+                texts.append(t)
+    return "\n\n".join(texts)
 
 
-def main():
-    for filename in os.listdir(pdf_path):
-        if filename.endswith('.pdf'):
-            file_path = os.path.join(pdf_path, filename)
-            texts = extract_text_from_pdf(file_path)
-            print(f"Texts form for {filename}:")
-            print(texts)
+# Chunking functions
 
-if __name__ == "__main__":
-    main()
+# I want to keep this project simple. So, I'll assume that every WORD is a token. I know this is not accurate, but for basic chunking it should be fine.
+# Then, I will use nltk for sentence tokenization. Afterwards, I will build chunks based on word counts. BUT, the chunker will chunk sentences. 
