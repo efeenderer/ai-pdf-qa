@@ -20,8 +20,14 @@ This project follows a standard **RAG (Retrieve-Augment-Generate)** pipeline:
    The backend extracts text using `PyMuPDF` or `pdfplumber`.
 
 2. **Text Chunking**  
-   Long text is split into smaller **semantic chunks** (e.g., ~500 tokens each).  
-   This helps the model better understand and retrieve relevant information.
+   To keep this project simple, I’ll assume that every word counts as a token.
+   I know this isn’t perfectly accurate for LLMs, but for a small RAG project it’s more than enough.
+
+   I’ll use NLTK for sentence tokenization.
+   Then, I’ll build chunks by grouping sentences together based on word counts.
+   Each chunk will contain roughly 500 words, and there will be a small overlap between chunks (around 80 words) to keep the context consistent.
+
+   This approach keeps the pipeline simple and readable while still giving good retrieval quality for PDF-based question answering.
 
 3. **Embeddings Generation**  
    Each chunk is converted into a **vector representation (embedding)** using a model like  
